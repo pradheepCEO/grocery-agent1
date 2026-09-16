@@ -21,7 +21,7 @@ jobs:
     - name: Build Docker image
       run: docker build -t grocery-agent1 .
 
-    -  name: Deploy to VPS via SSH
+    - name: Deploy to VPS via SSH
   uses: appleboy/ssh-action@v0.1.10
   with:
     host: ${{ secrets.VPS_HOST }}
@@ -35,4 +35,3 @@ jobs:
       docker rm grocery-agent1 || true
       docker build -t grocery-agent1 .
       docker run -d --name grocery-agent1 -p 80:80 grocery-agent1
-
